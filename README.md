@@ -18,9 +18,9 @@ flaw:
    The links are of the mentioned catogories : Files, Login/admin pages, Backups, Emails and contacts, Errors, Git and env
 
    
-   3) UI/UX :
-      I have designed a landing page of a cafe which provides description of the cafe, product showcase and customer testimonials by using Figma.
-      The link of my figma file has been attached inside the text file (The text file contains link of the file and the prototype link).
+3) UI/UX :
+   I have designed a landing page of a cafe which provides description of the cafe, product showcase and customer testimonials by using Figma.
+   The link of my figma file has been attached inside the text file (The text file contains link of the file and the prototype link).
 
 
    Domain specific:
