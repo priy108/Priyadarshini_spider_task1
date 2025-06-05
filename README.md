@@ -11,18 +11,17 @@ Common tasks:
 flaw:
    (In the multiplayer mode clicking the restart/player-2 button before clicking the stop button leads to undesired output)
 
+
+
 2) Cybersecurity :
    I have created a pdf file which consists of the publically availabe links by using google dorking. I have did the same for 4 different sites (Telsa, NASA, Openai, Netflix)
-   The links are of the below mentioned catogories:
-            1)Files
-            2)Login/admin pages
-            3)Backups
-            4)Emails and contacts 
-            5)Errors
-            6)Git and env
+   The links are of the mentioned catogories : Files, Login/admin pages, Backups, Emails and contacts, Errors, Git and env
+
+   
    3) UI/UX :
       I have designed a landing page of a cafe which provides description of the cafe, product showcase and customer testimonials by using Figma.
       The link of my figma file has been attached inside the text file (The text file contains link of the file and the prototype link).
+
 
    Domain specific:
    UI/UX :
