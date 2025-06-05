@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SINGLE PLAYER</title>
+</head>
+<body>  
+  <h2>Player 1= <span id="score1">0</span></h2>
+  <h2>Player 2= <span id="score2">0</span></h2>
+  <h2><span id="winner"></span></h2>
+  <section id="score">
+    <img id="scorepic" src="unnamed1.png" alt="score">
+  </section>
+  <section id="hammer">
+    <img id="hammerpic" src="unnamed2.png" alt="hammer">
+  </section>
+  <button id="button">CLICK TO STOP</button>
+  <button id="restart">CLICK FOR PLAYER2</button>
+</body>
+                  
+ <script type="text/javascript">
+  const image=document.getElementById('hammerpic')
+  let angle=0
+  let direc=1
+  let highscore=0
+  let p1=0
+  let p2=0
+  let stops=0
+  function rotate(){
+    angle+=(1*direc)
+    image.style.transform=`rotate(${angle}deg)`
+    request=requestAnimationFrame(rotate)
+    if (angle>180){
+      direc=-1
+    }
+    if (angle<0){
+      angle=0
+      direc=1
+    }
+  }
+  rotate()
+
+  function stoprotate(){
+    cancelAnimationFrame(request)
+  }
+
+  function display(){
+    if (p1==0){
+      if (angle<=90){
+        score=Math.round(angle*10/9)
+        document.getElementById("score1").innerText=score
+      }
+      else if (90<angle<=180){
+        score=Math.round((180-angle)*10/9)
+        document.getElementById("score1").innerText=score
+      }
+    }
+    else if (p2==0 && p1==1) {
+      if (angle<=90){
+        score1=Math.round(angle*10/9)
+        document.getElementById("score2").innerText=score1
+      }
+      else if (90<angle<=180){
+        score1=Math.round((180-angle)*10/9)
+        document.getElementById("score2").innerText=score1
+      }
+      if (score>score1){
+        document.getElementById("winner").innerText="WINNER : PLAYER 1"
+      }
+      else if (score1>score) {
+        document.getElementById("winner").innerText="WINNER : PLAYER 2"
+      }
+      else{
+        document.getElementById("winner").innerText="DRAW"
+      }
+    }
+  }
+  function restart(){
+    if (p1==0){
+    angle=0
+    document.getElementById("restart").innerText="CLICK TO RESTART"
+    cancelAnimationFrame(request)
+    requestAnimationFrame(rotate)
+    p1=1
+    }
+    else if (p2==0 && p1==1){
+    angle=0
+    document.getElementById("score1").innerText=0
+    document.getElementById("score2").innerText=0
+    document.getElementById("restart").innerText="CLICK FOR PLAYER2"
+    document.getElementById("winner").innerText=""
+    p1=0
+    p2=0
+    cancelAnimationFrame(request)
+    requestAnimationFrame(rotate)
+    }
+  }
+  document.getElementById("button").addEventListener("click",stoprotate)
+  document.getElementById("button").addEventListener("click",display)
+  document.getElementById("restart").addEventListener("click",restart)
+  
+
+
+</script>
+
+<style type="text/css">
+  body{
+  background-color: black;
+  color: antiquewhite;
+  text-align: center;
+}
+
+#button{
+  background-color: black;
+  color: white;
+  margin-left:100px ;
+}
+
+#restart{
+  background-color: black;
+  color: white;
+  margin-left:100px ;
+}
+
+#score{
+  align-items: center;
+}
+
+#scorepic{
+  position: absolute;
+  width: 90px;
+  margin-top: 90px;
+}
+
+#hammerpic{
+  width: 150px;
+  margin-top: 270px;
+  margin-right: 50px;
+  transform-origin: right center;
+}
+
+@media(max-width:600px){
+  #main{
+    width: 100%;
+    float: none;
+  }
+  #sidebar{
+    width: 100%;
+    float: none;
+  }
+</style>

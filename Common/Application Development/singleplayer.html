@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SINGLE PLAYER</title>
+</head>
+<body>  
+  <h1>Score= <span id="fscore">0</span></h1>
+  <h2>High Score= <span id="hscore">0</span></h2>
+  <section id="score">
+    <img id="scorepic" src="unnamed1.png" alt="score">
+  </section>
+  <section id="hammer">
+    <img id="hammerpic" src="unnamed2.png" alt="hammer">
+  </section>
+  <button id="button">CLICK TO STOP</button>
+  <button id="restart">CLICK TO RESTART</button>
+</body>
+                  
+ <script type="text/javascript">
+  const image=document.getElementById('hammerpic')
+  let angle=0
+  let direc=1
+  let highscore=0
+  let rotating = true;
+  function rotate(){
+    angle+=(1*direc)
+    image.style.transform=`rotate(${angle}deg)`
+    request=requestAnimationFrame(rotate)
+    if (angle>180){
+      direc=-1
+    }
+    if (angle<0){
+      angle=0
+      direc=1
+    }
+  }
+  rotate()
+
+  function stoprotate(){
+    rotating=false
+    cancelAnimationFrame(request)
+  }
+
+  function display(){
+    if (angle<=90){
+      score=Math.round(angle*10/9)
+      document.getElementById("fscore").innerText=score
+    }
+    else if (90<angle<=180){
+      score=Math.round((180-angle)*10/9)
+      document.getElementById("fscore").innerText=score
+    }
+    if (highscore<score){
+      document.getElementById("hscore").innerText=score
+      highscore=score
+    }
+  }
+  function restart(){
+    angle=0
+    document.getElementById("fscore").innerText=0
+    cancelAnimationFrame(request)
+    requestAnimationFrame(rotate)
+  }
+  document.getElementById("button").addEventListener("click",stoprotate)
+  document.getElementById("button").addEventListener("click",display)
+  document.getElementById("restart").addEventListener("click",restart)
+
+</script>
+
+<style type="text/css">
+  body{
+  background-color: black;
+  color: antiquewhite;
+  text-align: center;
+}
+
+#button{
+  background-color: black;
+  color: white;
+  margin-left:100px ;
+}
+
+#restart{
+  background-color: black;
+  color: white;
+  margin-left:100px ;
+}
+
+#score{
+  align-items: center;
+}
+
+#scorepic{
+  position: absolute;
+  width: 90px;
+  margin-top: 90px;
+}
+
+#hammerpic{
+  width: 150px;
+  margin-top: 270px;
+  margin-right: 50px;
+  transform-origin: right center;
+}
+
+@media(max-width:600px){
+  #main{
+    width: 100%;
+    float: none;
+  }
+  #sidebar{
+    width: 100%;
+    float: none;
+  }
+</style>
+
+
